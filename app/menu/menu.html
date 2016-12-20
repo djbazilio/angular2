@@ -1,0 +1,50 @@
+<nav class="navbar navbar-default" (click)="$event.preventDefault()">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" (click)="status.isopen = !status.isopen" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Brand</a>
+        </div>
+        <div *ngIf="status.isopen" role="alert">
+            <ul class="nav navbar-nav">
+                <li *ngFor="let link of links" (click)="status.isopen = !status.isopen" >
+                    <a routerLink="{{link.url}}">{{link.name}}</a>
+                </li>
+            </ul>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" >
+            <ul class="nav navbar-nav">
+                <li *ngFor="let link of links">
+                    <a routerLink="{{link.url}}">{{link.name}}</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Link</a></li>
+                  <li dropdown>
+                    <a href id="simple-dropdown" dropdownToggle>
+                        Dropdown <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" dropdownMenu aria-labelledby="simple-dropdown">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                  </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <router-outlet></router-outlet>
+</div>
+
+
